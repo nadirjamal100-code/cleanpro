@@ -1,0 +1,17 @@
+<section class="section blog" id="blog">
+  <div class="container">
+    <div class="grid">
+      @for (p of posts; track p.title) {
+        <article class="post" [class.post--featured]="p.featured">
+          <img [src]="'assets/images/' + p.img + '.webp'" [alt]="p.alt" loading="lazy" width="400" height="260">
+          <div class="post__body">
+            <p class="meta">JOHN HELTON &nbsp; JAN 6, 2026</p>
+            <h3>{{ p.title }}</h3>
+            <p class="ex">{{ p.excerpt }}</p>
+            <a class="btn" [class.btn--primary]="p.featured" [class.link]="!p.featured" [routerLink]="['/blog', p.slug]">Read More</a>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+<section class="c" id="contact-form">
+  <div class="container c__in">
+    <div class="c__l">
+      <h2>Find us</h2>
+      <ul>
+        @for (i of info; track i.label) {
+          <li><a [href]="i.href"><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path [attr.d]="i.d"/></svg></span>
+            <span><b>{{ i.label }}</b><small>{{ i.value }}</small></span></a></li>
+        }
+      </ul>
+    </div>
+    <div class="c__r">
+      <p class="eyebrow">Contact info</p>
+      <h2>Keep In Touch</h2>
+      <p class="sub">We prioritize responding to your inquiries promptly to ensure you receive the assistance you need in a timely manner</p>
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <label class="sr-only" for="name">Name</label>
+        <input id="name" type="text" formControlName="name" placeholder="Name" autocomplete="name" [attr.aria-invalid]="invalid('name')">
+        @if (invalid('name')) { <span class="err" role="alert">Please enter your name.</span> }
+        <label class="sr-only" for="email">Email</label>
+        <input id="email" type="email" formControlName="email" placeholder="Email" autocomplete="email" [attr.aria-invalid]="invalid('email')">
+        @if (invalid('email')) { <span class="err" role="alert">Please enter a valid email address.</span> }
+        <label class="sr-only" for="message">Message</label>
+        <textarea id="message" rows="3" formControlName="message" placeholder="Message" [attr.aria-invalid]="invalid('message')"></textarea>
+        @if (invalid('message')) { <span class="err" role="alert">Message must be at least 10 characters.</span> }
+        <button class="btn btn--primary" type="submit">Sent Message</button>
+        @if (sent()) { <p class="ok" role="status">Thank you! Your message has been sent.</p> }
+      </form>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,11 @@
+<app-header />
+<main class="article-page">
+  @if (story; as article) {
+    <header class="article-hero"><div class="container"><a class="back-link" routerLink="/blog"><span aria-hidden="true">←</span> All stories</a><p class="article-category">{{ article.category }}</p><h1>{{ article.title }}</h1><p class="article-deck">{{ article.excerpt }}</p><div class="article-meta"><span>ProCleaning Journal</span><i aria-hidden="true"></i><span>{{ article.date }}</span><i aria-hidden="true"></i><span>{{ article.readTime }}</span></div></div></header>
+    <div class="container article-layout"><article class="article-content"><img class="article-cover" [src]="'assets/images/' + article.image + '.webp'" [alt]="article.alt" width="1000" height="600"><p class="article-intro">{{ article.intro }}</p>@for (section of article.sections; track section.heading) { <section><h2>{{ section.heading }}</h2><p>{{ section.body }}</p></section> }<div class="article-signoff"><span aria-hidden="true">✳</span><p><strong>A little care goes a long way.</strong><br>Thanks for reading the ProCleaning Journal.</p></div></article><aside class="article-aside"><p class="aside-kicker">Keep exploring</p><h2>More fresh ideas</h2>@for (related of relatedStories; track related.slug) { <a class="related-story" [routerLink]="['/blog', related.slug]"><img [src]="'assets/images/' + related.image + '.webp'" [alt]="related.alt" width="120" height="82"><span><small>{{ related.category }}</small><strong>{{ related.title }}</strong><em>{{ related.readTime }} <span aria-hidden="true">↗</span></em></span></a> }<a class="all-stories" routerLink="/blog">Browse all stories <span aria-hidden="true">→</span></a></aside></div>
+  } @else {
+    <section class="not-found"><div class="container"><p class="eyebrow">The page you’re looking for has moved</p><h1>Let’s find a fresh idea.</h1><a class="btn btn--primary" routerLink="/blog">Back to the journal</a></div></section>
+  }
+  <section class="article-cta"><div class="container article-cta__inner"><div><p class="eyebrow">More time for your day</p><h2>Come home to a little more calm.</h2></div><a class="btn btn--primary" routerLink="/contact">Get a quote <span aria-hidden="true">↗</span></a></div></section>
+</main>
+<app-footer />

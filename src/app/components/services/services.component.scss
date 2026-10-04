@@ -1,0 +1,19 @@
+.services { padding-top: 120px; padding-bottom: 130px; }
+.slider { position: relative; margin-top: 40px; }
+.track { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.track.is-sliding .card { animation: card-slide-in .42s cubic-bezier(.22,.61,.36,1) both; }
+.track.is-sliding .card:nth-child(2) { animation-delay: 35ms; }
+.track.is-sliding .card:nth-child(3) { animation-delay: 70ms; }
+@keyframes card-slide-in { from { opacity: .65; transform: translateX(28px); } to { opacity: 1; transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) { .track.is-sliding .card { animation: none; } }
+.card { img { width: 100%; aspect-ratio: 400 / 283; object-fit: cover; border-radius: 28px; margin-bottom: 20px; }
+  h3 { font: 500 24px/1.3 var(--f-head); margin-bottom: 14px; }
+  p { font: 400 16px/1.65 var(--f-head); color: var(--c-text); margin-bottom: 24px; }
+  &:hover .btn--outline, &:nth-child(2) .btn--outline { background: var(--c-green); border-color: var(--c-green); color: #fff; } }
+.card .btn { font-family: var(--f-head); font-size: 15px; height: 48px; }
+.next { position: absolute; right: -26px; top: 120px; width: 56px; height: 56px; border-radius: 50%; border: 0; background: var(--c-green); display: grid; place-items: center;
+  transition: background .2s; &:hover { background: var(--c-green-dark); } }
+@media (max-width: 1279px) { .next { right: -12px; } }
+@media (max-width: 1023px) { .services { padding-block: 80px; }
+  .track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 24px; padding-bottom: 8px; scrollbar-width: none; &::-webkit-scrollbar { display: none; } }
+  .card { flex: 0 0 min(80%, 400px); scroll-snap-align: start; } .next { top: 100px; right: 0; width: 48px; height: 48px; } }

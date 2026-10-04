@@ -1,0 +1,17 @@
+.f { background: var(--c-footer); color: #fff; padding-top: 70px; }
+.f__top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.4fr; gap: 40px; padding-bottom: 60px; }
+.logo { display: flex; align-items: center; gap: 8px; margin-bottom: 18px; span { display: flex; flex-direction: column; gap: 2px; } b { font: 700 24px/1 var(--f-head); i { font-style: normal; color: var(--c-green); } } small { font: 400 11px/1 var(--f-head); } }
+.f__brand p { font: 400 12px/1.7 var(--f-head); max-width: 280px; }
+.f__contact { display: grid; gap: 11px; margin-top: 18px; }
+.f__contact a { display: flex; align-items: center; gap: 9px; color: #e3ebe4; font: 400 12px/1.4 var(--f-head); transition: color .2s; }
+.f__contact a:hover { color: var(--c-green); }
+.f__contact .material-symbols-rounded { color: var(--c-green); font-size: 17px; }
+h4 { font: 500 16px/1.3 var(--f-head); margin-bottom: 22px; }
+ul { display: flex; flex-direction: column; gap: 22px; } li a { font: 400 12px/1 var(--f-head); transition: color .2s; &:hover, &.active { color: var(--c-green); } }
+form { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+input { width: 100%; max-width: 285px; height: 38px; border-radius: 6px; border: 1px solid #fff; background: #fff; padding: 0 12px; font: 400 12px var(--f-head); &:focus { outline: 3px solid var(--c-green); } }
+.btn { height: 36px; padding: 0 20px; font-size: 12px; font-family: var(--f-head); }
+.err { font-size: 12px; color: #ff8a80; } .ok { font-size: 12px; color: #8be3a8; }
+.f__copy { text-align: center; font: 400 12px/1 var(--f-head); padding-block: 26px 28px; border-top: 1px solid rgba(255,255,255,.12); }
+@media (max-width: 1023px) { .f__top { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 599px) { .f__top { grid-template-columns: 1fr; } }

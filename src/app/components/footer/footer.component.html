@@ -1,0 +1,21 @@
+<footer class="f">
+  <div class="container f__top">
+    <div class="f__brand">
+      <a class="logo" routerLink="/" fragment="home" aria-label="ProCleaning home"><img src="assets/icons/logo-broom.svg" width="28" height="46" alt="">
+        <span><b><i>Pro</i>Cleaning</b><small>Cleaning Services company</small></span></a>
+      <p>Stay updated with our latest cleaning tips, service updates, and helpful articles on maintaining a spotless home.</p>
+      <div class="f__contact" aria-label="Contact details"><a [href]="'mailto:' + contact.email"><span class="material-symbols-rounded" aria-hidden="true">mail</span>{{ contact.email }}</a><a [href]="'tel:' + contact.phoneLink"><span class="material-symbols-rounded" aria-hidden="true">call</span>{{ contact.phone }}</a></div>
+    </div>
+    <nav aria-label="Company"><h4>Company</h4><ul>@for (c of company; track c.l) { <li><a [routerLink]="c.h" [fragment]="c.fragment" [class.active]="isActive(c.h, c.fragment)" [attr.aria-current]="isActive(c.h, c.fragment) ? 'page' : null">{{ c.l }}</a></li> } <li><a routerLink="/team" [class.active]="isActive('/team')" [attr.aria-current]="isActive('/team') ? 'page' : null">Our Team</a></li></ul></nav>
+    <nav aria-label="Know more"><h4>Know More</h4><ul>@for (c of more; track c.l) { <li><a [routerLink]="c.h" [fragment]="c.fragment" [class.active]="isActive(c.h, c.fragment)" [attr.aria-current]="isActive(c.h, c.fragment) ? 'location' : null">{{ c.l }}</a></li> }</ul></nav>
+    <div class="f__news"><h4>Newsletter</h4>
+      <form (ngSubmit)="subscribe()" novalidate>
+        <label class="sr-only" for="nl">Email</label>
+        <input id="nl" type="email" [formControl]="email" placeholder="Email Goes here">
+        @if (email.invalid && email.touched) { <span class="err" role="alert">Enter a valid email.</span> }
+        <button class="btn btn--primary" type="submit">Send</button>
+        @if (done()) { <span class="ok" role="status">Subscribed!</span> }
+      </form></div>
+  </div>
+  <p class="f__copy">{{ year }} “Procleaning” All Right Reserved</p>
+</footer>

@@ -1,0 +1,18 @@
+<section class="w">
+  <div class="container w__in">
+    <div class="w__img">
+      <img class="w__main" src="assets/images/welcome-main.webp" width="360" height="300" alt="Smiling cleaning team in green aprons" loading="lazy">
+      <img class="w__inset" src="assets/images/welcome-inset.webp" width="210" height="190" alt="Cleaner wiping a surface" loading="lazy">
+    </div>
+    <div class="w__txt">
+      <h2>Welcome To Our Pro-cleaning Company!</h2>
+      <p class="lead">We make your space shine! Professional and reliable cleaning service company providing top-notch solutions for homes and businesses. Satisfaction guaranteed!"</p>
+      <ul class="perks">
+        @for (p of perks; track $index) {
+          <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="#37b865"/><path d="m5 9.3 2.5 2.4L13 6.5" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ p }}</li>
+        }
+      </ul>
+      <div class="btns"><a class="btn btn--primary" href="/contact">Book Now</a><a class="btn btn--outline" href="#team">Know More</a></div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+<header class="hdr">
+  <div class="container hdr__in">
+    <a class="logo" routerLink="/" fragment="home" aria-label="ProCleaning home">
+      <img src="assets/icons/logo-broom.svg" width="28" height="46" alt="">
+      <span><b class="logo__t"><i>Pro</i>Cleaning</b><small>Cleaning Services company</small></span>
+    </a>
+    <nav class="nav" [class.nav--open]="open()" aria-label="Primary">
+      @for (l of links; track l.label; let i = $index) {
+        <a [routerLink]="l.href" [fragment]="l.fragment" [class.active]="isActive(l.href, l.fragment)" [attr.aria-current]="isActive(l.href, l.fragment) ? 'page' : null" (click)="go()">{{ l.label }}</a>
+        @if (i === 0) {
+          <div class="services-menu" [class.services-menu--open]="servicesOpen()" (mouseenter)="servicesOpen.set(true)" (mouseleave)="servicesOpen.set(false)">
+            <a class="services-menu__trigger" routerLink="/services" [class.active]="isActive('/services')" [attr.aria-current]="isActive('/services') ? 'page' : null" [attr.aria-expanded]="servicesOpen()" (click)="toggleServices()">Services <span class="material-symbols-rounded" aria-hidden="true">expand_more</span></a>
+            <div class="services-menu__panel" aria-label="Cleaning services">
+              @for (service of serviceLinks; track service.slug) { <a [routerLink]="['/services', service.slug]" (click)="go()">{{ service.label }}<span class="material-symbols-rounded" aria-hidden="true">arrow_outward</span></a> }
+            </div>
+          </div>
+        }
+      }
+      <a class="btn btn--primary nav__cta" routerLink="/contact" (click)="go()">Get a quote</a>
+    </nav>
+    <a class="btn btn--primary hdr__cta" routerLink="/contact">Get a quote</a>
+    <button class="burger" type="button" (click)="toggle()" [attr.aria-expanded]="open()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>

@@ -1,0 +1,23 @@
+<section class="section services" id="services">
+  <div class="container">
+    <div class="sec-head">
+      <h2>We Always Provide The Best Service</h2>
+      <div class="aside"><h3>Services</h3><p>While we can customize your cleaning plan to suit your needs, most clients schedule regular cleaning services:</p></div>
+    </div>
+    <div class="slider">
+      <div class="track" #track [class.is-sliding]="isSliding">
+        @for (s of services; track s.title) {
+          <article class="card">
+            <img [src]="'assets/images/' + s.img + '.webp'" [alt]="s.alt" loading="lazy" width="400" height="283">
+            <h3><a [routerLink]="['/services', s.slug]">{{ s.title }}</a></h3>
+            <p>{{ s.text }}</p>
+            <a class="btn btn--outline btn--sm" [routerLink]="['/services', s.slug]">Explore service
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          </article>
+        }
+      </div>
+      <button class="next" type="button" (click)="next()" aria-label="Next services">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+  </div>
+</section>

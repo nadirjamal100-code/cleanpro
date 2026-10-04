@@ -1,0 +1,21 @@
+<section class="pr" id="pricing">
+  <div class="container">
+    <p class="pr__eyebrow">Our Pricing</p>
+    <h2>Choose From Our Lowest Plans and Prices</h2>
+    <div class="tog" role="group" aria-label="Billing period">
+      @for (p of ['Monthly', 'Yearly']; track p) {
+        <button type="button" [class.on]="period() === p" [attr.aria-pressed]="period() === p" (click)="period.set($any(p))">{{ p }}</button>
+      }
+    </div>
+    <div class="plans">
+      @for (p of plans; track p.name) {
+        <article class="plan" [class.plan--on]="p.featured">
+          <h3>{{ p.name }}</h3>
+          <div class="price"><sup>$</sup>{{ price(p) }}.00/<small>{{ suffix() }}</small></div>
+          <ul>@for (f of p.features; track f) { <li>{{ f }}</li> }</ul>
+          <a class="btn" [class.btn--primary]="p.featured" [class.btn--outline]="!p.featured" href="/contact">Book Now</a>
+        </article>
+      }
+    </div>
+  </div>
+</section>

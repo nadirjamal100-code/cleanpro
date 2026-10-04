@@ -1,0 +1,43 @@
+<app-header />
+<main class="blog-page">
+  <section class="blog-hero" aria-labelledby="blog-title">
+    <div class="container blog-hero__inner">
+      <div class="blog-hero__copy">
+        <p class="eyebrow"><span></span> The ProCleaning journal</p>
+        <h1 id="blog-title">A fresher take on <em>everyday living.</em></h1>
+        <p class="blog-hero__lead">Simple advice, thoughtful ideas, and little ways to make your home feel its very best.</p>
+        <a class="hero-link" href="#stories">Find your fresh start <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="blog-hero__art" aria-hidden="true"><span class="art-leaf art-leaf--one"></span><span class="art-leaf art-leaf--two"></span><span class="art-spark">✳</span><span class="art-caption">A little care<br>goes a long way.</span></div>
+    </div>
+  </section>
+
+  <section class="stories" id="stories" aria-labelledby="stories-title">
+    <div class="container">
+      <div class="stories__heading">
+        <div><p class="eyebrow"><span></span> Ideas for a lighter day</p><h2 id="stories-title">The latest from us</h2></div>
+        <p>Good things to know for a home that feels calm, clean, and completely yours.</p>
+      </div>
+      <div class="story-tools">
+        <div class="category-list" aria-label="Filter stories by category">
+          @for (category of categories; track category) {
+            <button type="button" [class.is-active]="activeCategory() === category" [attr.aria-pressed]="activeCategory() === category" (click)="setCategory(category)">{{ category }}</button>
+          }
+        </div>
+        <label class="story-search"><span class="material-symbols-rounded" aria-hidden="true">search</span><span class="sr-only">Search stories</span><input type="search" placeholder="Search stories" [value]="searchTerm()" (input)="searchTerm.set($any($event.target).value)"></label>
+      </div>
+      <div class="story-grid">
+        @for (article of filteredArticles(); track article.title; let i = $index) {
+          <article class="story-card" [class.story-card--feature]="i === 0 && activeCategory() === 'All stories' && !searchTerm()">
+            <a class="story-card__image" [routerLink]="['/blog', article.slug]" [attr.aria-label]="'Read ' + article.title"><img [src]="'assets/images/' + article.image + '.webp'" [alt]="article.alt" [attr.width]="i === 0 ? 760 : 500" [attr.height]="i === 0 ? 470 : 330" loading="lazy"><span class="story-card__category">{{ article.category }}</span></a>
+            <div class="story-card__body"><div class="story-card__meta"><span>{{ article.date }}</span><i aria-hidden="true"></i><span>{{ article.readTime }}</span></div><h3>{{ article.title }}</h3><p>{{ article.excerpt }}</p><a class="story-card__read" [routerLink]="['/blog', article.slug]">Read the story <span aria-hidden="true">↗</span></a></div>
+          </article>
+        } @empty {
+          <div class="empty-state"><span class="material-symbols-rounded" aria-hidden="true">search_off</span><h3>No stories found</h3><p>Try a different search or choose another topic.</p><button type="button" (click)="searchTerm.set(''); setCategory('All stories')">Show all stories</button></div>
+        }
+      </div>
+    </div>
+  </section>
+  <section class="blog-cta" id="contact" aria-labelledby="blog-cta-title"><div class="container blog-cta__inner"><div><p class="eyebrow eyebrow--light"><span></span> Your time is yours</p><h2 id="blog-cta-title">Ready for a little more breathing room?</h2><p>Let us take cleaning off your list. You deserve to enjoy the fresh feeling.</p></div><a class="btn btn--primary" routerLink="/contact">Let’s plan your clean <span aria-hidden="true">↗</span></a></div></section>
+</main>
+<app-footer />

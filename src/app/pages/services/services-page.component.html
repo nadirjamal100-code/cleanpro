@@ -1,0 +1,46 @@
+<app-header />
+<main>
+  <section class="services-hero">
+    <div class="container services-hero__grid">
+      <div class="services-hero__copy">
+        <p class="eyebrow"><span></span> ProCleaning services</p>
+        <h1>A little help.<br><em>A lot more room to breathe.</em></h1>
+        <p class="hero-lead">From everyday upkeep to a full-home refresh, find the right kind of clean for your space and your schedule.</p>
+        <div class="hero-actions"><a class="btn btn--primary" href="/contact">Get a quote <span aria-hidden="true">↗</span></a><a class="hero-link" href="#service-list">Explore services <span aria-hidden="true">↓</span></a></div>
+        <div class="trust-note"><span class="trust-check">✓</span><span>Careful, reliable cleaning from people who care</span></div>
+      </div>
+      <div class="services-hero__art">
+        <img class="hero-image" src="assets/images/hero-bg.webp" alt="Professional cleaning team at work in a bright home" width="1600" height="800">
+        <div class="hero-card"><span class="hero-card__spark">✦</span><span><strong>Make space for good things.</strong><small>We’ll handle the clean-up.</small></span></div>
+        <div class="hero-stamp" aria-hidden="true"><span>FRESH<br>STARTS<br>HERE</span><b>✳</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-list section" id="service-list">
+    <div class="container">
+      <div class="list-heading"><div><p class="eyebrow"><span></span> Find your fresh</p><h2>Cleaning to fit your space.</h2></div><p class="list-heading__aside">Every home and workplace is different. Pick the service that sounds right and we’ll help you shape the details.</p></div>
+      <div class="service-grid">
+        @for (service of services; track service.number) {
+          <article class="service-card">
+            <a class="service-card__image" [routerLink]="['/services', service.slug]" [attr.aria-label]="'Learn about ' + service.title"><img [src]="'https://images.unsplash.com/' + service.image + '?auto=format&fit=crop&w=900&q=80&fm=webp'" [alt]="service.alt" loading="lazy" width="900" height="600"><span class="service-number">{{ service.number }}</span><span class="service-tag">{{ service.tag }}</span></a>
+            <div class="service-card__body"><h3>{{ service.title }}</h3><p>{{ service.description }}</p><a class="service-more" [routerLink]="['/services', service.slug]">Explore service <span aria-hidden="true">↗</span></a></div>
+          </article>
+        }
+      </div>
+      <div class="list-foot"><span>Looking for something specific?</span><a href="/contact">Tell us what you need <span aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
+
+  <section class="how section">
+    <div class="container how__grid">
+      <div class="how__heading"><p class="eyebrow"><span></span> Simple from the start</p><h2>Getting a cleaner space should feel easy.</h2><p>We keep the process personal and straightforward, from your first question to the finishing touches.</p><a class="btn btn--primary" href="/contact">Let’s get started <span aria-hidden="true">↗</span></a></div>
+      <div class="steps">
+        @for (step of steps; track step.n) { <article class="step"><span class="step__n">{{ step.n }}</span><div><h3>{{ step.title }}</h3><p>{{ step.text }}</p></div><span class="step__arrow" aria-hidden="true">↗</span></article> }
+      </div>
+    </div>
+  </section>
+
+  <section class="service-cta"><div class="container service-cta__in"><div><p class="eyebrow eyebrow--light"><span></span> Your space, your way</p><h2>Not sure which service is right?</h2><p>Tell us a little about your space. We’ll help you find the right fit.</p></div><a class="btn btn--white" href="/contact">Get in touch <span aria-hidden="true">↗</span></a><span class="cta-mark" aria-hidden="true">✳</span></div></section>
+</main>
+<app-footer />

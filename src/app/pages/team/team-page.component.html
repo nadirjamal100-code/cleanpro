@@ -1,0 +1,52 @@
+<app-header />
+<main class="our-team-page">
+  <section class="team-hero" aria-labelledby="team-title">
+    <div class="container team-hero__inner">
+      <div class="team-hero__copy">
+        <p class="eyebrow"><span></span> Meet the people who make it feel easy</p>
+        <h1 id="team-title">A little care goes a <em>long way.</em></h1>
+        <p class="team-hero__lead">We’re a friendly crew of cleaning professionals who believe the best work starts by listening, showing up, and taking care of the details.</p>
+        <a class="btn btn--primary" href="#our-people">Meet your cleaning crew <span aria-hidden="true">↓</span></a>
+        <div class="team-hero__proof"><span aria-hidden="true">✳</span><p><strong>Good people. Thoughtful work.</strong><small>That’s the ProCleaning way.</small></p></div>
+      </div>
+      <div class="team-hero__photo">
+        <img src="assets/images/welcome-main.webp" alt="The ProCleaning crew, ready to make your space shine" width="600" height="500">
+        <div class="team-hero__caption"><span class="team-hero__spark" aria-hidden="true">✦</span><span><strong>A team you can feel good about</strong><small>Here to make your day a little lighter.</small></span></div>
+      </div>
+    </div>
+    <div class="team-hero__orb" aria-hidden="true"></div>
+  </section>
+
+  <section class="crew section" id="our-people" aria-labelledby="crew-title">
+    <div class="container">
+      <div class="crew__heading">
+        <div><p class="eyebrow"><span></span> The people behind the polish</p><h2 id="crew-title">Your cleaning crew</h2></div>
+        <p>Different strengths, one shared promise: treat every space with respect and every visit with care.</p>
+      </div>
+      <div class="crew__grid">
+        @for (member of members; track member.name; let i = $index) {
+          <article class="crew-card" [class.crew-card--featured]="i === 1">
+            <div class="crew-card__photo"><img [src]="'assets/images/' + member.img + '.webp'" [alt]="member.alt" width="400" height="314" loading="lazy"><span class="crew-card__number">0{{ i + 1 }}</span></div>
+            <div class="crew-card__body"><p class="crew-card__role">{{ member.role }}</p><h3>{{ member.name }}</h3><p class="crew-card__bio">{{ member.bio }}</p></div>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="team-promise" aria-labelledby="promise-title">
+    <div class="container team-promise__inner">
+      <div class="team-promise__intro"><p class="eyebrow eyebrow--light"><span></span> How we show up</p><h2 id="promise-title">The little things are the big things.</h2><p>Our work is built on simple habits that make each visit feel dependable and personal.</p></div>
+      <div class="promise-list">
+        <article><span>01</span><div><h3>We listen first</h3><p>Your priorities shape the clean, so the care goes where it matters most.</p></div></article>
+        <article><span>02</span><div><h3>We respect your space</h3><p>We work carefully, keep things considerate, and leave your home as we found it.</p></div></article>
+        <article><span>03</span><div><h3>We notice the details</h3><p>From the everyday surfaces to the easy-to-miss corners, we take pride in the finish.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="team-cta" aria-labelledby="team-cta-title">
+    <div class="container team-cta__inner"><div><p class="eyebrow"><span></span> A fresh start is one hello away</p><h2 id="team-cta-title">Ready to meet your new favorite cleaning crew?</h2></div><a class="btn btn--primary" routerLink="/" fragment="contact">Let’s plan your clean <span aria-hidden="true">↗</span></a></div>
+  </section>
+</main>
+<app-footer />
